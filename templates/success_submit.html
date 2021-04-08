@@ -1,0 +1,29 @@
+{% extends "messages_layout.html" %}
+
+{% block title %}
+Submit sucessfully
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Submit sucessfully!</h4>
+    {% if submit_type=="register" %}
+    <p>You submit your data sucessfully<br>Thank you</p>
+    <hr>
+    <p class="mb-0">
+        <a href="{{url_for('login_page')}}">Return back to login page</a>
+
+    </p>
+    {% elif submit_type=="review" %}
+    <p>You submit your review sucessfully<br>Thank you</p>
+    <hr>
+    <p class="mb-0">
+        <a href="{{url_for('book_details',book_id=book_id)}}">Return back to the book information page</a>
+
+    </p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

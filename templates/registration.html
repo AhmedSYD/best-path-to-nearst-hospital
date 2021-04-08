@@ -1,0 +1,38 @@
+{% extends "login_registration_layout.html" %}
+{% block title %}
+Book registration
+{% endblock %}
+
+
+
+{% block header%} 
+Registration
+{% endblock %}
+
+
+{% block body %}
+<form action="{{url_for('check_registration')}}" method="POST">
+    <div class="form-group">
+      <label for="Firstlabel">First Name</label>
+      <input type="text" class="form-control" name="firstName" placeholder="type your first name">
+    </div>
+    <div class="form-group">
+        <label for="lastlabel">Last Name</label>
+        <input type="text" class="form-control" name="lastName" placeholder="type your last name">
+      </div>
+      <div class="form-group">
+        <label for="usernamelabel">Username</label>
+        <input type="text" class="form-control" name="username_register" placeholder="type your username">
+      </div>
+    <div class="form-group">
+      <label for="passwordlabel">Password</label>
+      <input type="password" class="form-control" name="password_register" placeholder="type your password">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+    <a href="{{url_for('login_page')}}" class="btn btn-secondary active" role="button" aria-pressed="true" id="cancelBtn">Cancel</a>
+
+   
+    
+  </form>
+  <div><br></div>
+{% endblock %}

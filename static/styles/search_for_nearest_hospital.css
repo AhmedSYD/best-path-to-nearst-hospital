@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #map {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index:1;
+  }
+  #navbarSupportedContent{
+    z-index: 2;
+  }
+  .collapse navbar-collapse{
+    z-index: 2;
+  }
+  #simplify{
+    position: absolute;
+    bottom: 10px;
+    margin-left: 10px;
+    margin-top: 710px;
+    z-index:2;
+    width: 200px;
+    
+    background-color: #A32702;
+    color: white;
+    height: 30px;
+    font-size: medium;
+
+    box-shadow: 0px 0px 8px 2px #000000;
+  }
+  .leaflet-draw-toolbar .leaflet-draw-draw-polygon{
+    display: none;
+  }
+  .leaflet-draw-actions{
+    visibility: none;
+  }
+  .leaflet-draw-toolbar .leaflet-draw-draw-circle{
+    display: none;
+  }
+  .leaflet-draw-toolbar .leaflet-draw-draw-rectangle{
+    display: none;
+  }
+  .leaflet-draw-toolbar .leaflet-draw-draw-polyline{
+    display: none;
+  }
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #00120B !important;
+    margin-left: 10px;
+    position:absolute;
+    right:10px;
+}
+#userLabel{
+ position: absolute;
+  right:110px;
+  display: inline-block;
+}
+

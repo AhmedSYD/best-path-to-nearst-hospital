@@ -1,0 +1,43 @@
+{% extends "messages_layout.html" %}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Error</h4>
+        <p>{{message}}</p>
+        
+        {% if type_error=="login" %}
+        <hr>
+        <p class="mb-0">
+            <a href="{{url_for('login_page')}}">Return back to the login page</a>
+    
+        </p>
+        {% elif type_error=="book_search" %}
+        <hr>
+        <p class="mb-0">
+            <a href="{{url_for('after_searching')}}">Return back to the book search page</a>
+    
+        </p>
+
+        {% elif type_error=="book_detail" %}
+        <hr>
+        <p class="mb-0">
+            <a href="{{url_for('book_details', book_id=book_id)}}">Return back to the book information page</a>
+    
+        </p>
+        {% elif type_error=="registration" %}
+        <hr>
+            <p class="mb-0">
+                <a href="{{url_for('register')}}">Return back to the registration page</a>
+        
+            </p>
+        
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

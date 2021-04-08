@@ -1,0 +1,84 @@
+body{
+     background-image: url("../images/white_wallpaper.jpg");
+     background-size: cover;
+     padding: 0;
+     margin:0;
+     background-color: thistle;
+
+}
+#main_box{
+     position: absolute;
+     top: 50%;
+     left: 50%; 
+     transform: translate(-50%, -50%);
+     width:900px;
+     height: auto;
+     background-color: white;
+     border-radius: 20px;
+}
+.right_side{
+     background-image: url('/static/images/hospital_img.png');
+     background-size: 100% 100%;
+     padding: 0;
+     margin:0;
+     border-top-right-radius: 20px;
+     border-bottom-right-radius: 20px;
+
+     /* margin-right: 0px; */
+}
+.left_side,.right_side{
+     height: 100%;
+     width: 100%;
+}
+.left_side{
+     background-color: white;
+}
+/* .col{
+     margin-bottom: -99999px;
+     padding-bottom: 99999px;
+} */
+#loginbox{
+     /* background-color: red; */
+     color: black;
+     width: 420px;
+     /* height: auto; */
+     /* position: absolute;
+     top: 50%;
+     left: 50%; */
+     /* transform: translate(-50%, -50%); */
+     color:blue;
+     font-size: 20px;
+     /* box-sizing: border-box; */
+     opacity:  90%;
+     /* border-radius: 20px; */
+     padding: 20px;
+     margin: 0px;
+}
+#loginImg{
+     width: 100px;
+     height: auto;
+     position: relative;
+     left:calc(50% - 50px);
+     margin-top: 20px;
+}
+.header{
+     text-align: center;
+     font-size: 25px;
+     font-weight: bold;
+}
+.act{
+     font-size: 12px;
+     text-decoration: none;
+     color: blue;
+     line-height: 20px;
+     padding-top: 12px;
+     text-align: center;
+     /* padding-bottom: 20px; */
+
+     
+}
+#loginbtn {
+ width:100% !important;
+ }
+
+
