@@ -57,5 +57,111 @@ body {
  position: absolute;
   right:110px;
   display: inline-block;
+  color: white;
+  font-size:larger ;
 }
+/* The sidepanel menu */
+.sidepanel {
+  height: 350px; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Stay on top */
+  top: 150px;
+  left: 0;
+  background-color:#026ed3; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.sidepanel h5{
+  color: #f1f1f1;
+  padding-left: 5px;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.list-group-item{
+  background-color: #026ed3;
+}
+
+#toggleLayer{
+  position: sticky;
+  bottom:15px;
+  width: 100px;
+  height:100px;
+  border-radius: 5px;
+  border: solid 3px white;
+  background-image:url('../images/mylayer.JPG');
+  background-size: cover;
+  color: rgb(0, 132, 255);
+  text-align: left;
+  
+  padding:5px;
+  padding-top:65px;
+  padding-bottom: 1px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  box-shadow: 0px 0px 8px 2px #000000;
+  /* margin-top: 430px; */
+  /* margin-left:20px; */
+  /* position:sticky;
+  top:500px; */
+  /* z-index: 3; */
+
+}
+#toggleDiv{
+ position: absolute;
+  bottom:15px;
+  /* margin-top: 480px; */
+  margin-left:20px;
+  z-index:2; 
+  margin-left:20px;
+  font-size: medium;
+}
+
+.loader {
+  border: 16px solid #b8b6b6da; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* margin-top: -350px; */
+  z-index: 2;
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* hr{
+  color: white;
+} */
+
 

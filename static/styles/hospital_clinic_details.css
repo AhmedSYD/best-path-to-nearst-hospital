@@ -1,0 +1,107 @@
+body{
+    font-size: 15px;
+}
+h2{
+    font-weight: bold;
+    margin-top: 30px;
+}
+.spanHospital{
+    font-weight: bold;
+    background-color: blue;
+
+    color: white;
+    border-radius: 10px;
+    /* margin-right: 20px; */
+    padding-right: 10px;
+    padding-left: 10px;
+    position: relative;
+    left:2px;
+    
+}
+.spanValue{
+    position: absolute;
+    left:150px;    
+}
+/* .list-group-item{
+    font-size: 30px;
+} */
+/* #spanHospital1{
+position: relative;
+left:30px;
+}
+#spanHospital2{
+    position: relative;
+    left:30px;
+}
+#spanHospital3{
+    position: relative;
+    left:30px;
+} */
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 70px;
+    font-size: 50px;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important;
+}
+
+.rating>input:checked~label:before {
+    opacity: 1;
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4;
+}
+
+#ratinglabel{
+    font-size: 30px;
+    color: black;
+}
+.form-group> label[for="comment"]{
+    font-size: 30px;  
+}
+.checked {
+    color: #FFD600;
+}
+.note{
+    margin-top: -15px;
+    color:red;
+   
+}
+.note span{
+    font-weight: bold;
+}
+button[type="submit"]{
+    margin-bottom: 20px;
+}
+h5{
+    font-weight: bold;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    margin-right: 80px !important;
+    margin-top: 16px !important;
+}
+

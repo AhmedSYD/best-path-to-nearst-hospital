@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital/Clinic Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/hospital_clinic_details.css') }}">
+    
+</head>
+
+<body>
+<div class="container">
+    <h2 id="bookTitleHeader">{{hospital_clinic_item[1]}}</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><span class="spanHospital" id="spanHospital1">Type</span><span class="spanValue">{{hospital_clinic_item[2]}}</span></li>
+        <li class="list-group-item"><span class="spanHospital" id="spanHospital2">Address</span><span class="spanValue">{{hospital_clinic_item[3]}}</span></li>
+        <li class="list-group-item"><span class="spanHospital" id="spanHospital3">Comm_code</span><span class="spanValue">{{hospital_clinic_item[4]}}</span></li>
+      </ul>
+
+      <h2 id="reviewsHeader">Reviews</h2>
+      {% if flag_review %}
+      <ul class="list-group">
+        {% for review in reviews %}
+        <li class="list-group-item flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{review[0]}}</h5>
+                <small>
+                    {% for _ in range(review[1]) %}
+                    <span class="fa fa-star checked"></span>
+                    {% endfor %}
+
+                    {% for _ in range(5-review[1]) %}
+                    <span class="fa fa-star"></span>
+                    {% endfor %}
+                </small>
+            </div>
+            <p class="mb-1">{{review[2]}}</p>
+
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <div class="alert alert-info" role="alert">
+            There is no reviews for this book yet.
+        </div>
+      {% endif %}
+
+
+    <h2 id="PersonalreviewHeader">Add your review</h2>
+    <form action="{{url_for('submit_book_review')}}" method="POST">
+    <label id="ratinglabel">Rating:</label>
+    <div class="rating">
+        
+        
+         <input type="radio" name="rating" value="5" id="5">
+         <label for="5">☆</label> 
+
+         <input type="radio" name="rating" value="4" id="4">
+         <label for="4">☆</label> 
+
+         <input type="radio" name="rating" value="3" id="3">
+         <label for="3">☆</label> 
+
+         <input type="radio" name="rating" value="2" id="2">
+         <label for="2">☆</label> 
+
+         <input type="radio" name="rating" value="1" id="1">
+         <label for="1">☆</label>
+    </div>
+
+    <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
+    </div>
+
+    <div class="note">
+        <p><span>Note:</span> you can't submit multiple reviews for the same book</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit your review</button>
+    <a href="{{url_for('mapping')}}" class="btn btn-secondary active" role="button" aria-pressed="true">Return back to map page</a>
+    </form>
+</div>
+
+</body>
