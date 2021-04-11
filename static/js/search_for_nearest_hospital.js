@@ -124,6 +124,8 @@ function open_review(hospital_clinic_code){
   console.log("clicked");
   console.log(hospital_clinic_code);
   map.closePopup();
+  // var state = map.save();
+  // console.log(state);
   location.href=Flask.url_for('hospital_clinic_details', {code:hospital_clinic_code})
 }
 
@@ -182,7 +184,8 @@ document.querySelector("#toggleLayer").onclick= function(){
     map.removeLayer(grayLayer);
     map.addLayer(mylayer);
     this.value="Gray";
-    document.querySelector("#toggleLayer").style.backgroundImage = "url('/static/images/grayLayer.JPG')";
+    document.querySelector("#toggleLayer").style.backgroundImage = "linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,1)), url('/static/images/grayLayer.JPG')";
+    // document.querySelector("#toggleLayer").style.color= "rgb(0, 132, 255)";
     currentLayer=mylayer;
     
   }
@@ -190,7 +193,8 @@ document.querySelector("#toggleLayer").onclick= function(){
     map.removeLayer(mylayer);
     map.addLayer(grayLayer);
     this.value="Satellite";
-    document.querySelector("#toggleLayer").style.backgroundImage = "url('/static/images/mylayer.JPG')";
+    document.querySelector("#toggleLayer").style.backgroundImage = "linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,1)), url('/static/images/mylayer.JPG')";
+    // document.querySelector("#toggleLayer").style.color= "white";
     currentLayer=grayLayer;
   }
 };

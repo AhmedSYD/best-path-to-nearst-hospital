@@ -103,7 +103,14 @@ body {
   margin-left: 50px;
 }
 .list-group-item{
-  background-color: #026ed3;
+  background-color:#026ed3;
+  /* color:#026ed3; */
+}
+.list-group-item a{
+  color: white;
+}
+.list-group-item a:hover{
+  color: #ff7800;
 }
 
 #toggleLayer{
@@ -113,9 +120,10 @@ body {
   height:100px;
   border-radius: 5px;
   border: solid 3px white;
-  background-image:url('../images/mylayer.JPG');
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,1)), url('../images/mylayer.JPG');
+  /* background-image:url('../images/mylayer.JPG'); */
   background-size: cover;
-  color: rgb(0, 132, 255);
+  color: white;
   text-align: left;
   
   padding:5px;

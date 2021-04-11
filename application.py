@@ -77,16 +77,21 @@ def mapping():
         if(not("user_id" in session)):
             session["user_id"]=[]
             print("add new data to session")
+        if(not("username" in session)):
+            session["username"]=[]
+            
         new_id=out_id.fetchone()[0]
         # print("session['user_id']=",session["user_id"])
 
         ## add new id to session if and only if the id is not used before to avoid repeating
         if ((len(session["user_id"])>0 and new_id!=session["user_id"][-1]) or (len(session["user_id"])==0)):
             session["user_id"].append(new_id)
+        if ((len(session["username"])>0 and username!=session["username"][-1]) or (len(session["username"])==0)):
+            session["username"].append(username)
         print(f"session now ={session['user_id']}")
         db.commit()
 
-    return render_template("search_for_nearest_hospital.html")
+    return render_template("search_for_nearest_hospital.html", username=session["username"][-1])
 
 @socketio.on("read_data")
 def read_json_data():

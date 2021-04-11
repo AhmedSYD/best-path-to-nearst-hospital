@@ -66,7 +66,11 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                  <label id="userLabel">Welcome</label>
+                  {% if username | length<20 %}
+                    <label id="userLabel">Welcome {{username}}</label>
+                  {% else %}
+                    <label id="userLabel">Welcome {{username[:20]}}.</label>
+                  {% endif %}
                   <a href="{{url_for('login_page')}}" class="btn btn-primary active" role="button" aria-pressed="true">Logout</a>
                 </form>
 
@@ -80,10 +84,11 @@
             <li class="list-group-item">
               <a href="#" value="BLN" class="favoriteLink">Sheldon M. Chumir Health Centre</a>
             </li>
-            <hr style="height:2px;border-width:0;color:white;background-color:white">
+            <hr>
             <li class="list-group-item">
               <a href="#" value="EAG" class="favoriteLink">Rockyview General Hospital</a>
             </li>
+            <hr>
             <li class="list-group-item">
               <a href="#" value="SET" class="favoriteLink">South Health Campus</a>
             </li>
