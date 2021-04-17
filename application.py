@@ -79,19 +79,33 @@ def mapping():
             print("add new data to session")
         if(not("username" in session)):
             session["username"]=[]
-            
         new_id=out_id.fetchone()[0]
         # print("session['user_id']=",session["user_id"])
 
         ## add new id to session if and only if the id is not used before to avoid repeating
         if ((len(session["user_id"])>0 and new_id!=session["user_id"][-1]) or (len(session["user_id"])==0)):
             session["user_id"].append(new_id)
+        print(f"session now ={session['user_id']}")
         if ((len(session["username"])>0 and username!=session["username"][-1]) or (len(session["username"])==0)):
             session["username"].append(username)
-        print(f"session now ={session['user_id']}")
         db.commit()
 
+    # return render_template("search_for_nearest_hospital.html")
     return render_template("search_for_nearest_hospital.html", username=session["username"][-1])
+
+
+@app.route("/direction/<loc_1>/<loc_2>",methods=["GET"])
+def direction(loc_1, loc_2):
+    print('in directions')
+    print(loc_1)
+    print(loc_2)
+    url = "http://router.project-osrm.org/route/v1/driving/{};{}?overview=full&steps=true&alternatives=3".format(loc_1, loc_2)
+    print(url)
+    response = requests.get(url)
+    print(response.json())
+    return jsonify(response.json())
+
+
 
 @socketio.on("read_data")
 def read_json_data():

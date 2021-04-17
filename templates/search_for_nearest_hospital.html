@@ -30,8 +30,11 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
         <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
+        <script src="https://npmcdn.com/leaflet-geometryutil"></script>
+
         <link rel="stylesheet" href="../static/styles/search_for_nearest_hospital.css">
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/Polyline.encoded.js"></script>
         {{ JSGlue.include() }}
         
     </head>
@@ -57,15 +60,25 @@
                         Shortest Path
                       </a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#" onclick="pathToNearest();return false;">To Nearest Hospital/Clinic</a>
-                        <a class="dropdown-item" href="#" onclick="pathToSelected();return false;">To Selected Hospital/Clinic</a>
+                        <a class="dropdown-item" href="#" onclick="pathToNearest(false);return false;">To Nearest Hospital/Clinic</a>
+                        <a class="dropdown-item" href="#" onclick="pathToSelected(false);return false;">To Selected Hospital/Clinic</a>
                       </div>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" onclick="removeSelected();return false;">Remove Selection</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Least Traffic Signals Path
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="pathToNearest(true);return false;">To Nearest Hospital/Clinic</a>
+                        <a class="dropdown-item" href="#" onclick="pathToSelected(true);return false;">To Selected Hospital/Clinic</a>
+                      </div>
                     </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" href="#" onclick="removeSelected();return false;">Remove Selection</a>
+                    </li> -->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                  <!-- <label id="userLabel">Welcome</label> -->
                   {% if username | length<20 %}
                     <label id="userLabel">Welcome {{username}}</label>
                   {% else %}
