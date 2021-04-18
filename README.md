@@ -38,3 +38,19 @@ You can find both libraries in the `requirements.txt` and install them by runnin
 - [Location of traffic](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A)
 
 ## How to use the webpage:
+- You can open the website by two methods:
+  - Because the website is deployed on public domain in [heroku](https://www.heroku.com), you can open the website by clicking on the link below 
+    `https://path2hospital.herokuapp.com` 
+  -  Run this website in your local server by installing all libraries required in your environment and run application.py in any IDE you like. Then, you will find a        line in the console `Running on <server link>` where `<server link>` is the link of the server of the flask where is working on. In my case, the server link is        `http://127.0.0.1:5000/`. After tha, copy and paste it in the link box of any browser you like to surf the website.
+-  The first page of the website is the login page, as you see in the image below. Type your username and password to surf the map page. 
+-  
+![login](https://user-images.githubusercontent.com/26576895/115163248-6555be00-a0a8-11eb-8a58-12261aebdc49.JPG)
+
+-  If you don't have account, click **Don't have account?** link to go to the registration page where you can write your (first name, last name, username, and password), then click on submit.
+
+![registration](https://user-images.githubusercontent.com/26576895/115163295-a6e66900-a0a8-11eb-851b-4494921dcb85.JPG)
+
+- Go back again to the login page and write your username and password and click on login.
+- After logining, you will the map page as you see below
+![Map](https://user-images.githubusercontent.com/26576895/115163364-fdec3e00-a0a8-11eb-992b-5d9bbaf3aaca.JPG)
+- 
