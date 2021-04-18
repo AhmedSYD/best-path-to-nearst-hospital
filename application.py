@@ -24,7 +24,7 @@ db = scoped_session(sessionmaker(bind=engine))
 
 
 # db.init_app(app) ##tigh database to flask
-
+##deploy code 
 @app.route("/")
 def login_page():
     print("in login")
