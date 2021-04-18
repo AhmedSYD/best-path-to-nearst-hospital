@@ -92,6 +92,10 @@ var simplified;
 var simplified_created=0; //flag to check if the samplified polygon is created or not
 var traffics;
 var hospitals_clinics;
+// var previous_userMarkerLayer;
+// var previous_selected;
+// var state_changes=0;
+// var previous_checkTraffic;
 
 function deleteAllLayers(removeSelected=true){
   for(i in map._layers) {
@@ -127,8 +131,8 @@ map.on('draw:created', function(e) {
     map.removeLayer(userMarekerLayer);
   }
   userMarekerLayer=layer;
-  console.log("userMarekerLayer:");
-  console.log(userMarekerLayer);
+  // console.log("userMarekerLayer:");
+  // console.log(userMarekerLayer);
   ///remove selected circle if the best path is created 
   if(map.hasLayer(BestPath)){
     deleteAllLayers(removeSelected=true);
@@ -136,6 +140,7 @@ map.on('draw:created', function(e) {
   else{
     deleteAllLayers(removeSelected=false);
   }
+  // state_changes=1;
   
 });
 map.on('draw:deleted', function (e) {
@@ -149,6 +154,7 @@ map.on('draw:deleted', function (e) {
   } 
 
   deleteAllLayers();
+  // state_changes=1;
 
 });
 var favoriteCircle;
@@ -158,6 +164,7 @@ var hospitals_dict={};
 // var all_paths_polyline={"shortest":null, "normal":[]};
 var BestPath;
 var loader = document.querySelector(".loader");
+var all_links = document.querySelectorAll("a");
 //////functions/////////////////////////
 /* Set the width of the sidebar to 250px (show it) */
 function openNav() {
@@ -173,8 +180,8 @@ function closeNav() {
 }
 
 function open_review(hospital_clinic_code){
-  console.log("clicked");
-  console.log(hospital_clinic_code);
+  // console.log("clicked");
+  // console.log(hospital_clinic_code);
   map.closePopup();
   location.href=Flask.url_for('hospital_clinic_details', {code:hospital_clinic_code})
 }
@@ -182,7 +189,7 @@ function open_review(hospital_clinic_code){
 function getNumberOfTrafficSignals(PathPolyline){
   let i;
   let count=0; 
-  console.log("PathPolyline=",PathPolyline);
+  // console.log("PathPolyline=",PathPolyline);
   // let k;
   // for(k=0.01; k<1;k+=0.001){
   //   interPolatedPoint=L.GeometryUtil.interpolateOnLine(map, PathPolyline, k);
@@ -202,12 +209,12 @@ function getNumberOfTrafficSignals(PathPolyline){
     // let length = L.GeometryUtil.distance(map, nearestPointOnPoly, trafficPoint);
     // console.log("length=",length);
     if(length<107){
-      console.log("nearest length=",length);
+      // console.log("nearest length=",length);
       count+=1;
     }
     
   }
-  console.log("number of traffics at this path equal=",count);
+  // console.log("number of traffics at this path equal=",count);
   return count;
 }
 function getDistanceOfPolyline(polylinePath){
@@ -228,21 +235,21 @@ function getDistanceOfPolyline(polylinePath){
 }
 async function  getPathsBetweenTwoLocations(locationGeoFeature1,locationGeoFeature2,checkTaffic=false) {
   const data = getPathToBetweenLocations(locationGeoFeature1,locationGeoFeature2,function(response) {
-    console.log("this is locationGeoFeature1:");
-    console.log(locationGeoFeature1);
+    // console.log("this is locationGeoFeature1:");
+    // console.log(locationGeoFeature1);
 
-    console.log("this is locationGeoFeature2");
-    console.log(locationGeoFeature1);
+    // console.log("this is locationGeoFeature2");
+    // console.log(locationGeoFeature1);
 
-    console.log("Response is:");
-    console.log(response);
+    // console.log("Response is:");
+    // console.log(response);
       // var polyUtil = require('polyline-encoded');
         let list_of_latlangs=[];
         let minTrafficCount=1570;
         for (let j = 0;j < response.routes.length;j++) {
             for (let i = 0;i < response.routes[j].legs[0].steps.length;i++) {
-                var polyline = L.Polyline.fromEncoded(response.routes[j].legs[0].steps[i].geometry)
-                console.log("polyline lat lang",L.PolylineUtil.decode(response.routes[j].legs[0].steps[i].geometry));
+                var polyline = L.Polyline.fromEncoded(response.routes[j].legs[0].steps[i].geometry);
+                // console.log("polyline lat lang",L.PolylineUtil.decode(response.routes[j].legs[0].steps[i].geometry));
                 list_of_latlangs.push(...L.PolylineUtil.decode(response.routes[j].legs[0].steps[i].geometry));
                 
             }
@@ -259,36 +266,47 @@ async function  getPathsBetweenTwoLocations(locationGeoFeature1,locationGeoFeatu
                 list_of_latlangs=[]; //remove list by using new empty array
                 let distanceofPoly=getDistanceOfPolyline(polyPath);
                 // polyPath.bindPopup("total distance (in meters)= "+(distanceofPoly).toFixed(2));
-                polyPath.bindPopup("Alternative route path");
+                polyPath.bindPopup("Alternative route path.<br>Path distance (in meters)= "+(distanceofPoly).toFixed(2));
               }
             }
             else{  //get the path that has less traffic signal
-              console.log("check traffic in the upper loop");
+              // console.log("check traffic in the upper loop");
               let polylinePath=L.polyline(list_of_latlangs,{color:'grey'}).addTo(map);
               list_of_latlangs=[];//remove list by using new empty array
               let TrafficSignalsCount=getNumberOfTrafficSignals(polylinePath);
-              console.log("TrafficSignalsCount=",TrafficSignalsCount);
+              // console.log("TrafficSignalsCount=",TrafficSignalsCount);
               if(TrafficSignalsCount<minTrafficCount){
                 minTrafficCount=TrafficSignalsCount;
                 BestPath=polylinePath;
               }
               // polylinePath.bindPopup("Number of Traffic Signals="+TrafficSignalsCount.toString(10));
-              polylinePath.bindPopup("Alternative route path");
+              polylinePath.bindPopup("Alternative route path.<br>Number of Traffic Signals="+TrafficSignalsCount.toString(10));
 
             }
 
         }
         if(checkTaffic){
+          //put the best path on the top
+          if(map.hasLayer(BestPath)){
+            map.removeLayer(BestPath);
+          }
+          BestPath.addTo(map);
           BestPath.setStyle({color:"green"});
-          BestPath.bindPopup("least traffic control signals path")
+          let TrafficSignalsCount=getNumberOfTrafficSignals(BestPath);
+          BestPath.bindPopup("Least traffic control signals path.<br>Number of Traffic Signals="+TrafficSignalsCount.toString(10));
           // BestPath.addTo(map);
         }
         else{ //shortest path
           BestPath.addTo(map);
           let distanceofPoly=getDistanceOfPolyline(BestPath);
           // BestPath.bindPopup("total distance (in meters)= "+(distanceofPoly).toFixed(2));
-          BestPath.bindPopup("Shortest path")
+          BestPath.bindPopup("Shortest path.<br>Path distance (in meters)= "+(distanceofPoly).toFixed(2));
         }
+      loader.style.display= "none";
+      all_links.forEach((link)=>{
+        link.style.pointerEvents = "auto";
+      });
+      // state_changes=0;
   });
   // return await data;
 }
@@ -297,11 +315,22 @@ async function pathToNearest (checkTaffic) {
         alert("User location is not selected.\nPlease, specify a user location.");
         return false;
     }
+    // if(!state_changes){ //nothing has beeen changed on the map
+    //   if((previous_checkTraffic!=undefined) && (previous_checkTraffic==checkTaffic)){ //click on the same link multiple times
+    //     return false;
+    //   }
+      
+    // }
+    // previous_checkTraffic=checkTaffic;
     loader.style.display= "block";
-    console.log("get path to nearest hospital");
+    all_links.forEach((link)=>{
+      link.style.pointerEvents = "none";
+    });
+    deleteAllLayers();
+    // console.log("get path to nearest hospital");
     let loc=userMarekerLayer.getLatLng();
-    console.log("loc:");
-    console.log(loc);
+    // console.log("loc:");
+    // console.log(loc);
     var userMarekerGeojsonFeature = {
       "type": "Feature",
       "geometry": {
@@ -313,8 +342,8 @@ async function pathToNearest (checkTaffic) {
       map.removeLayer(nearestHospitalLayer);
     }
     var nearestHospital = turf.nearest(userMarekerGeojsonFeature, hospitals_clinics);
-    console.log("nearestHospital:");
-    console.log(nearestHospital);
+    // console.log("nearestHospital:");
+    // console.log(nearestHospital);
 
     var geojsonMarkerOptions = {
       radius: 25,
@@ -333,7 +362,7 @@ async function pathToNearest (checkTaffic) {
 
   //get all pathes between two locations, including the shortest one
    getPathsBetweenTwoLocations(userMarekerGeojsonFeature,nearestHospital,checkTaffic);
-   loader.style.display= "none";
+   
   // console.log("returnedData:",returnedData);
 
 
@@ -345,8 +374,8 @@ const url =  "/direction/" + loc_1.geometry.coordinates[0] + ',' + loc_1.geometr
       url: "/direction/" + loc_1.geometry.coordinates[0] + ',' + loc_1.geometry.coordinates[1] + '/' +  loc_2.geometry.coordinates[0] + ',' + loc_2.geometry.coordinates[1] ,
       method: 'GET'
     }).done(function(data) {
-      console.log('request recieved');
-      console.log(data);
+      // console.log('request recieved');
+      // console.log(data);
       callback(data)
       return data
     });
@@ -355,7 +384,7 @@ const url =  "/direction/" + loc_1.geometry.coordinates[0] + ',' + loc_1.geometr
 
 
 async function pathToSelected(checkTaffic){
-  console.log("get path to selected hospital");
+  // console.log("get path to selected hospital");
   if(!map.hasLayer(selectedCircle)){
     alert("No Hospital/Clinic is selected");
     return false;
@@ -365,10 +394,21 @@ async function pathToSelected(checkTaffic){
     alert("User location is not selected.\nPlease, specify a user location.");
     return false;
   }
+    // if(!state_changes){ //nothing has beeen changed on the map
+    //   // if((previous_checkTraffic!=undefined) && (previous_checkTraffic==checkTaffic)){ //click on the same link multiple times
+    //     return false;
+    //   // }
+      
+    // }
+    // previous_checkTraffic=checkTaffic;
+    deleteAllLayers(removeSelected=false);
     loader.style.display= "block";
+    all_links.forEach((link)=>{
+      link.style.pointerEvents = "none";
+    });
     let loc_1=userMarekerLayer.getLatLng();
-    console.log("loc_1:");
-    console.log(loc_1);
+    // console.log("loc_1:");
+    // console.log(loc_1);
     var userMarekerGeojsonFeature = {
       "type": "Feature",
       "geometry": {
@@ -379,8 +419,8 @@ async function pathToSelected(checkTaffic){
 
 
     let loc_2=selectedCircle.getLatLng();
-    console.log("loc_1:");
-    console.log(loc_1);
+    // console.log("loc_1:");
+    // console.log(loc_1);
     var selectedCircleGeojson = {
       "type": "Feature",
       "geometry": {
@@ -390,7 +430,6 @@ async function pathToSelected(checkTaffic){
     };
   //get all pathes between two location, including the shortest one. 
   getPathsBetweenTwoLocations(userMarekerGeojsonFeature, selectedCircleGeojson,checkTaffic);
-  loader.style.display= "none";
 
  
 
@@ -426,10 +465,20 @@ document.querySelector("#toggleLayer").onclick= function(){
 ////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded",()=>{
   // var loader = document.querySelector(".loader");
-  console.log("loader");
-  console.log(loader);
+  // console.log("loader");
+  // console.log(loader);
   loader.style.display= "block";
-  console.log(loader);
+  all_links.forEach((link)=>{
+    link.style.pointerEvents = "none";
+  });
+  // $(".navbar-nav li.disabled a").prop("disabled",true);
+  all_links.forEach((link)=>{
+    link.style.pointerEvents = "none";
+  });
+  // forEach(all_links, function (index, value) {
+  //   console.log(index, value); // passes index + value back!
+  // });
+  // console.log(loader);
   //connect to websocket
   var socket = io.connect(location.protocol+"//"+document.domain+":"+location.port)
   socket.on('connect',()=>{
@@ -439,8 +488,8 @@ document.addEventListener("DOMContentLoaded",()=>{
     // data_json=JSON.parse(data.responseText);
     traffics=data.traffics;
     hospitals_clinics=data.hospitals_clinics;
-    console.log(traffics);
-    console.log(hospitals_clinics);
+    // console.log(traffics);
+    // console.log(hospitals_clinics);
     
     // var oms = new OverlappingMarkerSpiderfier(map);
     // var popup = new L.Popup();
@@ -501,11 +550,13 @@ document.addEventListener("DOMContentLoaded",()=>{
       if(map.hasLayer(selectedCircle)){
         map.removeLayer(selectedCircle);
       }
+      // state_changes=1;
        let circleLoc=this.getLatLng();
        if((selectedCircle!= undefined) && (circleLoc==selectedCircle.getLatLng())){
-         selectedCircle=undefined;
+         selectedCircle=undefined; 
          return;
        }
+
        selectedCircle= L.circleMarker(circleLoc, {radius: 25}).setStyle({color: "green"}).addTo(map);
     });
     // marker.on('mouseout', function (e) {
@@ -521,6 +572,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   map.addLayer(markers);
   loader.style.display= "none";
+  all_links.forEach((link)=>{
+    link.style.pointerEvents = "auto";
+  });
 
 });
 
@@ -536,62 +590,11 @@ document.querySelectorAll(".favoriteLink").forEach(link=>{
       }, 100);
       // map.setView(circleLoc);
       favoriteCircle = L.circleMarker(circleLoc, {radius: 25}).addTo(map);
-      console.log("click value:");
-      console.log(codeValue);
+      // console.log("click value:");
+      // console.log(codeValue);
     };
 });
 
 });
 
-// document.getElementById("simplify").addEventListener("click", function() {
-//   if(polyline.length==0){
-//     alert("No polyline is drawn!!");
-//     return;
-//   }
-//   if(simplified_created){// simplified is already created and no more polygon is drawn
-//     alert("Simplified polyline is already created and no more polyline is drawn!");
-//     return;   
-//   }
-//   console.log("outputlayers:");
-//   console.log(polyline);
-  
-
-//   console.log(polyline.length);
-//   // var first_loc;
-
-//   var results = polyline.map((item, index) => {
-//       // if(index==0){
-//       //   first_loc=[item.lng, item.lat];
-//       // }
-//       return [item.lng, item.lat];
-      
-//   });
-//   // console.log("final array in the result:");
-//   // console.log(results[results.length-1]);
-
-//   // if(results[results.length-1]!=first_loc){
-//   //   results.push(first_loc);
-//   // }
-  
-
-  
-//   // results=[results];
-//   console.log("results");
-//   console.log(results);
-//   var geojson = turf.lineString(results);
-//   console.log("geojson data:");
-//   console.log(geojson);
-//   var options = {tolerance: 0.01, highQuality: false};
-
-//   simplified = turf.simplify(geojson, options);
-//   // var line = turf.polygonToLine(simplified);
-//   console.log("simplified:")
-//   console.log(simplified)
-//   // console.log("line:")
-//   // console.log(line)
-  
-//   L.geoJSON(simplified).addTo(map);
-//   simplified_created=1;
-  
-// });
 
