@@ -1,7 +1,5 @@
-Flask
-Flask-Session
-Flask-SocketIO
-Flask-JSGlue
-psycopg2-binary
-SQLAlchemy
-requests
+Flask_SocketIO==5.0.1
+SQLAlchemy==1.3.19
+requests==2.24.0
+Flask_JSGlue==0.3.1
+Flask==1.1.2
