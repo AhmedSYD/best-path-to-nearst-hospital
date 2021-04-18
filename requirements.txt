@@ -1,0 +1,7 @@
+Flask
+Flask-Session
+Flask-SocketIO
+Flask-JSGlue
+psycopg2-binary
+SQLAlchemy
+requests
