@@ -3,4 +3,8 @@ Flask==1.1.2
 requests==2.24.0
 Flask_SocketIO==5.0.1
 Flask_JSGlue==0.3.1
+Flask-Session==0.3.2
+click==7.1.2
+click-plugins==1.1.1
+Jinja2==2.11.2
 gunicorn==20.1.0
