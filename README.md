@@ -35,7 +35,7 @@ You can find the libraries in the `requirements.txt` and install them by running
 - [Turf.js](https://turfjs.org/)
 - [Leaflet.GeometryUtil](https://makinacorpus.github.io/Leaflet.GeometryUtil/)
 - [Location of hospitals and clinics in Calgary dataset](https://data.calgary.ca/Services-and-Amenities/Calgary-Health-Clinics-and-Hospitals/pp67-7mf4)
-- [Location of traffic control signals](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A)
+- [Location of traffic control signals in Calgary dataset](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A)
 - [Mapbox Studio Editor](https://studio.mapbox.com/)
 
 ## The Map Configuration in Mapbox Studio:
