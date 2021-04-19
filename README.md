@@ -98,6 +98,9 @@ You can find the libraries in the `requirements.txt` and install them by running
   
   ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115218667-168b4100-a107-11eb-8152-24fc6093e065.JPG)
   
+ - If you'd like to leave the map page, click on `Logout` button on the top right of the page.
+ ![Logout](https://user-images.githubusercontent.com/26576895/115232552-201ca500-a117-11eb-9ed7-b03fca8932d0.JPG)
+  
 ## what’s contained in each file:
 - `import.py`: is utilized for creating a table for hospitals/clinincs in postgresql database, which all values are inserted from [Location of hospitals and clinics in Calgary dataset](https://data.calgary.ca/Services-and-Amenities/Calgary-Health-Clinics-and-Hospitals/pp67-7mf4). Also, it creates a table for users and another one for reviews. The attributes of the users table are (id,firstName, lastName, username, password), but the attributes of the reviews table are (id, rate, commment, hospital_clinic_id, and user_id)
 - `application.py`: is responsible for python flask coding and database transactions. Also, import JSON data from Open Calgary API datasets and then passes it to the `search_for_nearest_hospital.js` 
@@ -115,6 +118,7 @@ You can find the libraries in the `requirements.txt` and install them by running
 - `static/js/search_for_nearest_hospital.js`: creating leaflet map and toggling between two layers are located in this file. Moreover, all algorithms related to draw the shortest path and the least traffic control signals path and view the favorite hospitals are included, also.
 - `static/js/Polyline.encoded.js`: this is considered to be a library that utilized to decode/encode the polyline and is imported in the `search_for_nearest_hospital.html` 
 - `Procfile` and `runtime.text`: These files are used to deploy the website on public domain ([heroku](https://www.heroku.com)).
+
 
 ## Demo:
 - You can find the demo video for this websiet at this [**Link**]()
