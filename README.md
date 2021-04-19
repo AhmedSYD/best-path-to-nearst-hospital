@@ -72,15 +72,16 @@ You can find the libraries in the `requirements.txt` and install them by running
 - You can get multiple types of paths from a marker to a hospital/clinic:<br>
   1- The shortest path between a marker and nearest hospital to the marker along with alternative routes paths (if exist) --where the shortest is highlighted in red,     but others in grey-- by clicking on `Shortest Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`.
   
-  ![shortest to nearest](https://user-images.githubusercontent.com/26576895/115216379-babfb880-a104-11eb-8bd1-3e5fbd10225b.JPG)
+  ![shortest to nearest](https://user-images.githubusercontent.com/26576895/115218451-dc21a400-a106-11eb-9a76-43bb94ee76fe.JPG)
 
   2- Shortest path with the alternative route between a marker and any hospital/clinic you select on the map by choosing `To Selected Hospital/Clinic`under the           `Shortest Path` dropdown. Any hospital/clinic is selected by double-clicking on it. To remove a selection, double click on it again. 
   
-  ![shortest to selected](https://user-images.githubusercontent.com/26576895/115216540-e347b280-a104-11eb-9acc-333fc80368fc.JPG)
+  ![shortest to selected](https://user-images.githubusercontent.com/26576895/115218515-eba0ed00-a106-11eb-96ed-46cdef90a2e3.JPG)
   
   3- The path that has the least number of traffic control signals from a marker to the nearest hospital by clicking on `Least Traffic Path` dropdown on the navbar and   choose `To Nearest Hospital/Clinic`, where the least traffic one is highlighted by green color and the other alternative routes (if exist) by grey color.
   
-  ![less traffic to nearest](https://user-images.githubusercontent.com/26576895/115216605-f2c6fb80-a104-11eb-844f-0eff6588b941.JPG)
+  ![less traffic to nearest](https://user-images.githubusercontent.com/26576895/115218576-fc516300-a106-11eb-8a67-772ef2b9208d.JPG)
 
   4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the       `Least Traffic Path` dropdown. 
-  ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115216707-0d00d980-a105-11eb-9fcb-e06c3145e1a8.JPG)
+  
+  ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115218667-168b4100-a107-11eb-8152-24fc6093e065.JPG)
