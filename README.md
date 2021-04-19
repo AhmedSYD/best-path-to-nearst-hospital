@@ -47,7 +47,7 @@ You can find the libraries in the `requirements.txt` and install them by running
 
 ## How to use the webpage:
 - You can open the website by two methods:
-  - Because the website is deployed on public domain in [heroku](https://www.heroku.com), you can open the website by clicking on the link below 
+  - Because the website is deployed on public domain in [heroku](https://www.heroku.com), you can open the website by clicking on this link 
     `https://path2hospital.herokuapp.com` 
   -  Run this website in your local server by installing all libraries required in your environment and run application.py in any IDE you like. Then, you will find a        line in the console `Running on <server link>` where `<server link>` is the link of the server of the flask where is working on. In my case, the server link is        `http://127.0.0.1:5000/`. After that, copy and paste it in the link box of any browser you like to surf the website.
 -  The first page of the website is the login page, as you see in the image below. Type your username and password to surf the map page. 
@@ -99,6 +99,7 @@ You can find the libraries in the `requirements.txt` and install them by running
   ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115218667-168b4100-a107-11eb-8152-24fc6093e065.JPG)
   
  - If you'd like to leave the map page, click on `Logout` button on the top right of the page.
+ 
  ![Logout](https://user-images.githubusercontent.com/26576895/115232552-201ca500-a117-11eb-9ed7-b03fca8932d0.JPG)
   
 ## what’s contained in each file:
