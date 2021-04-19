@@ -35,7 +35,15 @@ You can find the libraries in the `requirements.txt` and install them by running
 - [Turf.js](https://turfjs.org/)
 - [Leaflet.GeometryUtil](https://makinacorpus.github.io/Leaflet.GeometryUtil/)
 - [Location of hospitals and clinics in Calgary dataset](https://data.calgary.ca/Services-and-Amenities/Calgary-Health-Clinics-and-Hospitals/pp67-7mf4)
-- [Location of traffic](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A)
+- [Location of traffic control signals](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A)
+- [Mapbox Studio Editor](https://studio.mapbox.com/)
+
+## The Map Configuration in Mapbox Studio:
+- Dataset: [Location of traffic control signals](https://data.calgary.ca/Health-and-Safety/Map-of-Traffic-Control-Signals/vspk-q7t7?fbclid=IwAR3qDZp7X27YP8nSQsXSs399_H4xoZ7eNdrnOJca7HqUvQK9qosuu84Z_8A) is converted to vector tiles to be used in the map.
+- Style: "Satellite" style and some useless layers is removed to optimize the map. 
+- Heatmap: represents the traffic dataset, which red circle represents the highest density of traffic control signals at its location on the map, but the outer blue circle represents the lowest density of the traffic control signals. and the heat map configuration are:
+    - Radius of heatmap circle: 30 px
+    - Opacity: 0.68
 
 ## How to use the webpage:
 - You can open the website by two methods:
@@ -69,6 +77,10 @@ You can find the libraries in the `requirements.txt` and install them by running
 
 ![review_page](https://user-images.githubusercontent.com/26576895/115167112-87eed380-a0b6-11eb-96c9-04dca2724b18.JPG)
 
+- Moreover, you can toggle between two layers, namely Gray layer and Satelitte layer . If you click on the **Satellite** map (on the bottom left of the web page), you will see that map is replaced with our published map layer, as you see in the image below. If you want to return back to the first layer, click on **Gray** map.
+
+![satellite layer](https://user-images.githubusercontent.com/26576895/115226318-64a44280-a10f-11eb-9516-411d78f2fc5e.JPG)
+
 - You can get multiple types of paths from a marker to a hospital/clinic:<br>
   1- The shortest path between a marker and nearest hospital to the marker along with alternative routes paths (if exist) --where the shortest is highlighted in red,     but others in grey-- by clicking on `Shortest Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`.
   
@@ -85,3 +97,25 @@ You can find the libraries in the `requirements.txt` and install them by running
   4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the       `Least Traffic Path` dropdown. 
   
   ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115218667-168b4100-a107-11eb-8152-24fc6093e065.JPG)
+  
+## what’s contained in each file:
+- `import.py`: is utilized for creating a table for hospitals/clinincs in postgresql database, which all values are inserted from [Location of hospitals and clinics in Calgary dataset](https://data.calgary.ca/Services-and-Amenities/Calgary-Health-Clinics-and-Hospitals/pp67-7mf4). Also, it creates a table for users and another one for reviews. The attributes of the users table are (id,firstName, lastName, username, password), but the attributes of the reviews table are (id, rate, commment, hospital_clinic_id, and user_id)
+- `application.py`: is responsible for python flask coding and database transactions. Also, import JSON data from Open Calgary API datasets and then passes it to the `search_for_nearest_hospital.js` 
+- `templates/login_registration_layout.html`: this is a layout for the login and registration pages. `login_page.html` and `registration.html` files inherit structure from it.
+- `templates/login_page.html`: this HTML file is specified for the login page. 
+- `templates/registration.html`: contains structure of the registration page.
+- `templates/search_for_nearest_hospital.html`: has the structure of the map page. 
+- `templates/hospital_clinic_details.html`:has the structure of all information about the hospital/clinic, reviews, and adding reviews.
+- `templates/messages_layout.html`: contains the layout of the messages either a successful submit message or an error message. `success_submit.html` and `error.html` inherit structure of the messages from it.
+- `templates/success_submit.html`: has the strcuture of any successful submit.
+- `templates/error.html`: is specified for any type of the error message.
+- `static/styles/login_registration_page.css`: this is a specified style sheet file for `login_page.html` and `registration.html` files.
+- `static/styles/search_for_nearest_hospital.css`: it is a style sheet for the `search_for_nearest_hospital.html`.
+- `static/styles/hospital_clinic_details.css`: similarily, it is a style sheet for the `hospital_clinic_details.html`.
+- `static/js/search_for_nearest_hospital.js`: creating leaflet map and toggling between two layers are located in this file. Moreover, all algorithms related to draw the shortest path and the least traffic control signals path and view the favorite hospitals are included, also.
+- `static/js/Polyline.encoded.js`: this is considered to be a library that utilized to decode/encode the polyline and is imported in the `search_for_nearest_hospital.html` 
+- `Procfile` and `runtime.text`: These files are used to deploy the website on public domain ([heroku](https://www.heroku.com)).
+
+## Demo:
+- You can find the demo video for this websiet at this [**Link**]()
+  
