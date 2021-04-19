@@ -44,6 +44,8 @@ You can find the libraries in the `requirements.txt` and install them by running
 - Heatmap: represents the traffic dataset, which red circle represents the highest density of traffic control signals at its location on the map, but the outer blue circle represents the lowest density of the traffic control signals. and the heat map configuration are:
     - Radius of heatmap circle: 30 px
     - Opacity: 0.68
+    - 
+![mapbox editor](https://user-images.githubusercontent.com/26576895/115233682-81914380-a118-11eb-9e0a-b73359db664f.JPG)
 
 ## How to use the webpage:
 - You can open the website by two methods:
@@ -97,6 +99,10 @@ You can find the libraries in the `requirements.txt` and install them by running
   4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the       `Least Traffic Path` dropdown. 
   
   ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115218667-168b4100-a107-11eb-8152-24fc6093e065.JPG)
+  
+  - Moreover, the user can click on the delete button, as indicated below, to delete the marker on the map to add a new one.
+  
+  ![delete_button](https://user-images.githubusercontent.com/26576895/115234041-e64c9e00-a118-11eb-8766-1283cfe78cfa.png)
   
  - If you'd like to leave the map page, click on `Logout` button on the top right of the page.
  
