@@ -23,7 +23,7 @@ This website is the project for the (Adv. Topics on Geospatial Technologies) cou
 - click-plugins==1.1.1
 - Jinja2==2.11.2
 - gunicorn==20.1.0 <br>
-You can find both libraries in the `requirements.txt` and install them by running this command `pip3 install -r requirements.txt` in the terminal window.
+You can find the libraries in the `requirements.txt` and install them by running this command `pip3 install -r requirements.txt` in the terminal window.
 
 ## Tools and Resources are used:
 - HTML 5
@@ -61,17 +61,26 @@ You can find both libraries in the `requirements.txt` and install them by runnin
 
 ![draw marker](https://user-images.githubusercontent.com/26576895/115165740-a69d9c00-a0af-11eb-95c1-a90fcc1512a2.png)
 
-- If you hover over any hospital/clinic, you will get the name of it and the link of **View/Add Review** page as you see below.
+- If you hover over any hospital/clinic, you will get the name of it and a link another page, namely **View/Add Review**ز
 
 ![view_add_review](https://user-images.githubusercontent.com/26576895/115166522-f2eadb00-a0b3-11eb-9c5f-2759fdce4981.JPG)
 
-- Once you click on the **View/Add Review** link, a new page is opened which has the information of the hospital/clinic, see the image below. Also, you can see other users' reviews and submit your review by rating. If you'd like to return back the map page, click on **Return back to map page** button.
+- Once you click on the **View/Add Review** link, a new page is opened which has the information of the hospital/clinic, see the image below. Also, you can see other users' reviews and submit your review. If you'd like to return back to the map page, click on **Return back to map page** button.
 
 ![review_page](https://user-images.githubusercontent.com/26576895/115167112-87eed380-a0b6-11eb-96c9-04dca2724b18.JPG)
 
-- You can get multiple types of paths from a marker to a hospital/clinic:
-1- The shortest path between a marker and nearest hospital to the marker along with alternative routes paths (if exist) --where the shortest is highlighted in red, but others in grey-- by clicking on `Shortest Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`.
+- You can get multiple types of paths from a marker to a hospital/clinic:<br>
+  1- The shortest path between a marker and nearest hospital to the marker along with alternative routes paths (if exist) --where the shortest is highlighted in red,     but others in grey-- by clicking on `Shortest Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`.
+  
+  ![shortest to nearest](https://user-images.githubusercontent.com/26576895/115216379-babfb880-a104-11eb-8bd1-3e5fbd10225b.JPG)
 
-2- Shortest path with the alternative route between a marker and any hospital/clinic you select on the map by choosing `To Selected Hospital/Clinic`under the `Shortest Path` dropdown. Any hospital/clinic is selected by double-clicking on it. To remove a selection, double click on it again. 
-3- The path that has the least number of traffic control signals from a marker to the nearest hospital by clicking on `Least Traffic Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`, where the least traffic one is highlighted by green color and the other alternative routes (if exist) by grey color.
-4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the `Least Traffic Path` dropdown. 
+  2- Shortest path with the alternative route between a marker and any hospital/clinic you select on the map by choosing `To Selected Hospital/Clinic`under the           `Shortest Path` dropdown. Any hospital/clinic is selected by double-clicking on it. To remove a selection, double click on it again. 
+  
+  ![shortest to selected](https://user-images.githubusercontent.com/26576895/115216540-e347b280-a104-11eb-9acc-333fc80368fc.JPG)
+  
+  3- The path that has the least number of traffic control signals from a marker to the nearest hospital by clicking on `Least Traffic Path` dropdown on the navbar and   choose `To Nearest Hospital/Clinic`, where the least traffic one is highlighted by green color and the other alternative routes (if exist) by grey color.
+  
+  ![less traffic to nearest](https://user-images.githubusercontent.com/26576895/115216605-f2c6fb80-a104-11eb-844f-0eff6588b941.JPG)
+
+  4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the       `Least Traffic Path` dropdown. 
+  ![less traffic to selected](https://user-images.githubusercontent.com/26576895/115216707-0d00d980-a105-11eb-9fcb-e06c3145e1a8.JPG)
