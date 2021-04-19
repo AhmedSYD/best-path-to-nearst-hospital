@@ -41,16 +41,37 @@ You can find both libraries in the `requirements.txt` and install them by runnin
 - You can open the website by two methods:
   - Because the website is deployed on public domain in [heroku](https://www.heroku.com), you can open the website by clicking on the link below 
     `https://path2hospital.herokuapp.com` 
-  -  Run this website in your local server by installing all libraries required in your environment and run application.py in any IDE you like. Then, you will find a        line in the console `Running on <server link>` where `<server link>` is the link of the server of the flask where is working on. In my case, the server link is        `http://127.0.0.1:5000/`. After tha, copy and paste it in the link box of any browser you like to surf the website.
+  -  Run this website in your local server by installing all libraries required in your environment and run application.py in any IDE you like. Then, you will find a        line in the console `Running on <server link>` where `<server link>` is the link of the server of the flask where is working on. In my case, the server link is        `http://127.0.0.1:5000/`. After that, copy and paste it in the link box of any browser you like to surf the website.
 -  The first page of the website is the login page, as you see in the image below. Type your username and password to surf the map page. 
--  
+ 
 ![login](https://user-images.githubusercontent.com/26576895/115163248-6555be00-a0a8-11eb-8a58-12261aebdc49.JPG)
 
--  If you don't have account, click **Don't have account?** link to go to the registration page where you can write your (first name, last name, username, and password), then click on submit.
+-  If you don't have an account, click **Don't have account?** link to go to the registration page where you can write your (first name, last name, username, and password), then click on submit.
 
 ![registration](https://user-images.githubusercontent.com/26576895/115163295-a6e66900-a0a8-11eb-851b-4494921dcb85.JPG)
 
 - Go back again to the login page and write your username and password and click on login.
-- After logining, you will the map page as you see below
+- After logining in, you will get the map page as you see below
 ![Map](https://user-images.githubusercontent.com/26576895/115163364-fdec3e00-a0a8-11eb-992b-5d9bbaf3aaca.JPG)
-- 
+- On the map page, if you'd like to check the favorite hospitals, click on `Favorite Hospitals/Clinics` to see them on a collapsible side panel. Then, click on any one of them to get its location on the map, it will be highlighted by blue circle, see the image below. 
+
+![favorite](https://user-images.githubusercontent.com/26576895/115165585-c08aaf00-a0ae-11eb-82ad-5d1108a75552.png)
+
+- Specify your location by drawing marker on the map as you see below.
+
+![draw marker](https://user-images.githubusercontent.com/26576895/115165740-a69d9c00-a0af-11eb-95c1-a90fcc1512a2.png)
+
+- If you hover over any hospital/clinic, you will get the name of it and the link of **View/Add Review** page as you see below.
+
+![view_add_review](https://user-images.githubusercontent.com/26576895/115166522-f2eadb00-a0b3-11eb-9c5f-2759fdce4981.JPG)
+
+- Once you click on the **View/Add Review** link, a new page is opened which has the information of the hospital/clinic, see the image below. Also, you can see other users' reviews and submit your review by rating. If you'd like to return back the map page, click on **Return back to map page** button.
+
+![review_page](https://user-images.githubusercontent.com/26576895/115167112-87eed380-a0b6-11eb-96c9-04dca2724b18.JPG)
+
+- You can get multiple types of paths from a marker to a hospital/clinic:
+1- The shortest path between a marker and nearest hospital to the marker along with alternative routes paths (if exist) --where the shortest is highlighted in red, but others in grey-- by clicking on `Shortest Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`.
+
+2- Shortest path with the alternative route between a marker and any hospital/clinic you select on the map by choosing `To Selected Hospital/Clinic`under the `Shortest Path` dropdown. Any hospital/clinic is selected by double-clicking on it. To remove a selection, double click on it again. 
+3- The path that has the least number of traffic control signals from a marker to the nearest hospital by clicking on `Least Traffic Path` dropdown on the navbar and choose `To Nearest Hospital/Clinic`, where the least traffic one is highlighted by green color and the other alternative routes (if exist) by grey color.
+4- The same path that is mentioned in `3`, but between a marker and selected hospital/clinic. This is created by choosing `To Selected Hospital/Clinic`under the `Least Traffic Path` dropdown. 
