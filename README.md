@@ -128,5 +128,5 @@ You can find the libraries in the `requirements.txt` and install them by running
 
 
 ## Demo:
-- You can find the demo video for this websiet at this [**Link**](https://www.youtube.com/watch?v=J0r9gPkpXko)
+- You can find the demo video for this website at this [**Link**](https://www.youtube.com/watch?v=J0r9gPkpXko)
   
