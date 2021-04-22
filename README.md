@@ -71,7 +71,7 @@ You can find the libraries in the `requirements.txt` and install them by running
 
 ![draw marker](https://user-images.githubusercontent.com/26576895/115165740-a69d9c00-a0af-11eb-95c1-a90fcc1512a2.png)
 
-- If you hover over any hospital/clinic, you will get the name of it and a link another page, namely **View/Add Review**ز
+- If you hover over any hospital/clinic, you will get the name of it and a link another page, namely **View/Add Review**.
 
 ![view_add_review](https://user-images.githubusercontent.com/26576895/115166522-f2eadb00-a0b3-11eb-9c5f-2759fdce4981.JPG)
 
